@@ -4,10 +4,10 @@ const app = express();
 const dotenv = require("dotenv");
 const { connectDb } = require("./utils/databaseConnection");
 
-const authRoute = require("./router/auth.router");
-const userRoute = require("./router/users.router");
-const movieRoute = require("./router/movies.router");
-const listRouter = require("./router/lists.router");
+const authRouter = require("./router/auth.router");
+const userRouter = require("./router/users.router");
+const videoRouter = require("./router/video.router");
+const commonRouter = require("./router/common.router");
 
 app.use(express.json());
 dotenv.config();
@@ -19,10 +19,10 @@ app.get("/", (req, res) => {
   res.send("Hello Express app!");
 });
 
-app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/user", userRoute);
-app.use("/api/v1/movie", movieRoute);
-app.use("/api/v1/list", listRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/user", userRouter);
+app.use("/api/v1/video", videoRouter);
+app.use("/api/v1/common", commonRouter);
 
 app.listen(3000, () => {
   console.log("server started");

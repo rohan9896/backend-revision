@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const List = require("../models/List.model");
+const Video = require("../models/Video.model");
 const verify = require("../utils/verifyToken");
 
 router.use(verify);
@@ -8,9 +8,9 @@ router.use(verify);
 router.post("/", async (req, res) => {
   if (req.user.isAdmin) {
     try {
-      const newList = new List(req.body);
-      const savedList = await newList.save();
-      res.status(201).json({ savedList, success: true });
+      const newVideo = new Video(req.body);
+      const savedVideo = await newVideo.save();
+      res.status(201).json({ savedVideo, success: true });
     } catch (error) {
       res.status(500).json({ error, success: false });
     }
