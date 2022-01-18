@@ -93,24 +93,7 @@ router.get("/", async (req, res) => {
 });
 
 //GET USER STATS(ADMIN-ONLY)
-router.get("stats", async (req, res) => {
-  const today = new Date();
-  const lastYear = today.setFullYear(today.setFullYear() - 1);
-
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
+router.get("/data/stats", async (req, res) => {
 
   try {
     const data = await User.aggregate([
