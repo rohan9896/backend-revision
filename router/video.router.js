@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const Video = require("../models/Video.model");
-const verify = require("../utils/verifyToken");
+const verify = require("../middlewares/verifyToken");
 
 router.use(verify);
 

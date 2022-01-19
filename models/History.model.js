@@ -5,6 +5,7 @@ const HistorySchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
     ref: "User",
+    unique: true,
   },
   videos: [
     {

@@ -1,7 +1,4 @@
 const router = require("express").Router();
-const verify = require("../utils/verifyToken");
-
-router.use(verify);
 
 //dropdown
 router.get("/genres", async(req, res) => {
