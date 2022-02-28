@@ -2,6 +2,7 @@ const express = require("express");
 var cors = require("cors");
 const app = express();
 const dotenv = require("dotenv");
+let port = process.env.PORT || 3000;
 const { connectDb } = require("./utils/databaseConnection");
 
 const {errorHandler} = require("./middlewares/errorHandler");
@@ -36,6 +37,6 @@ app.use("/api/v1/history", historyRouter);
 app.use(routeNotFoundHandler);
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.log("server started");
+app.listen(port, () => {
+  console.log(`server started on port ${port}`);
 });
