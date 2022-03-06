@@ -5,8 +5,8 @@ const dotenv = require("dotenv");
 let port = process.env.PORT || 3000;
 const { connectDb } = require("./utils/databaseConnection");
 
-const {errorHandler} = require("./middlewares/errorHandler");
-const {routeNotFoundHandler} = require("./middlewares/routeNotFound");
+const { errorHandler } = require("./middlewares/errorHandler");
+const { routeNotFoundHandler } = require("./middlewares/routeNotFound");
 
 const authRouter = require("./router/auth.router");
 const userRouter = require("./router/users.router");
