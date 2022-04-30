@@ -23,13 +23,11 @@ router.put("/:id", async (req, res) => {
         { new: true }
       );
       updatedUser
-        ? res
-            .status(200)
-            .json({
-              updatedUser,
-              message: "Information updated successfully!",
-              success: true,
-            })
+        ? res.status(200).json({
+            updatedUser,
+            message: "Information updated successfully!",
+            success: true,
+          })
         : res
             .status(404)
             .json({ message: "user doesnt exist!", success: false });
@@ -83,18 +81,15 @@ router.get("/", async (req, res) => {
       res.status(500).json({ error, success: false });
     }
   } else {
-    res
-      .status(403)
-      .json({
-        message: "You are not allowed to see all users!",
-        success: false,
-      });
+    res.status(403).json({
+      message: "You are not allowed to see all users!",
+      success: false,
+    });
   }
 });
 
 //GET USER STATS(ADMIN-ONLY)
 router.get("/data/stats", async (req, res) => {
-
   try {
     const data = await User.aggregate([
       {

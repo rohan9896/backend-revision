@@ -15,7 +15,10 @@ const loginUser = async (req, res) => {
     }
 
     //decypt password
-    const bytes = CryptoJS.AES.decrypt(currentUser.password, process.env.SECRET);
+    const bytes = CryptoJS.AES.decrypt(
+      currentUser.password,
+      process.env.SECRET
+    );
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);
 
     //if password coming from client doesnt matches the password from db(decypted password)
@@ -24,7 +27,7 @@ const loginUser = async (req, res) => {
         .status(401)
         .json({ message: "Please check email or password!!", success: false });
     } else {
-    // Create new token for user
+      // Create new token for user
       const authToken = jwt.sign(
         { id: currentUser._id, isAdmin: currentUser.isAdmin },
         process.env.SECRET,
@@ -37,11 +40,11 @@ const loginUser = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({
-        message: "Server error",
-        error,
-       success: false
-      });
+      message: "Server error",
+      error,
+      success: false,
+    });
   }
 };
 
-module.exports = {loginUser};
+module.exports = { loginUser };
