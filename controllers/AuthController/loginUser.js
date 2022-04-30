@@ -9,7 +9,7 @@ const loginUser = async (req, res) => {
 
     //if email doesnt exists
     if (!currentUser) {
-      res
+      return res
         .status(401)
         .json({ message: "user doesn't exists!!", success: false });
     }
@@ -23,7 +23,7 @@ const loginUser = async (req, res) => {
 
     //if password coming from client doesnt matches the password from db(decypted password)
     if (originalPassword !== password) {
-      res
+      return res
         .status(401)
         .json({ message: "Please check email or password!!", success: false });
     } else {
@@ -36,10 +36,10 @@ const loginUser = async (req, res) => {
 
       //remove password from currentUser and send rest of the info
       const { password, ...info } = currentUser._doc;
-      res.status(200).json({ ...info, authToken, success: true });
+      return res.status(200).json({ ...info, authToken, success: true });
     }
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       message: "Server error",
       error,
       success: false,
