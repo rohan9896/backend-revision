@@ -5,6 +5,7 @@ router.get("/genres", async (req, res) => {
   try {
     res.status(200).json({
       data: [
+        "All",
         "DSA",
         "Devops",
         "Cloud",
